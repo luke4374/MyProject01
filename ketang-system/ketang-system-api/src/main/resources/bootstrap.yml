@@ -1,0 +1,24 @@
+server:
+  servlet:
+    context-path: /system
+  port: 63110
+#?????
+spring:
+  application:
+    name: system-api
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/test01?serverTimezone=UTC&userUnicode=true&useSSL=false&
+    username: root
+    password: 1234
+# ????????
+logging:
+  config: classpath:log4j2-dev.xml
+swagger:
+  title: "在线课堂系统信息管理"
+  description: "系统管理接口"
+  base-package: com.ketang.system
+  enabled: true
+  version: 1.0.0
+
+

@@ -1,4 +1,4 @@
-package com.ketang.service;
+package com.ketang.content.service;
 
 import com.ketang.base.model.PageParams;
 import com.ketang.base.model.PageResult;

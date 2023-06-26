@@ -1,13 +1,13 @@
-package com.ketang.service.impl;
+package com.ketang.content.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ketang.base.model.PageParams;
 import com.ketang.base.model.PageResult;
 import com.ketang.content.mapper.CourseBaseMapper;
+import com.ketang.content.service.CourseBaseService;
 import com.ketang.model.dto.QueryCourseParamDto;
 import com.ketang.model.po.CourseBase;
-import com.ketang.service.CourseBaseService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

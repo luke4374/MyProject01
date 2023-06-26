@@ -4,15 +4,15 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.ketang</groupId>
-        <artifactId>ketang-content</artifactId>
+        <artifactId>ketang-system</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
     <groupId>com.ketang</groupId>
-    <artifactId>ketang-content-service</artifactId>
+    <artifactId>ketang-system-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>ketang-content-service</name>
-    <description>ketang-content-service</description>
+    <name>ketang-system-service</name>
+    <description>ketang-system-service</description>
 
     <properties>
         <java.version>1.8</java.version>
@@ -21,17 +21,15 @@
     <dependencies>
         <dependency>
             <groupId>com.ketang</groupId>
-            <artifactId>ketang-content-model</artifactId>
+            <artifactId>ketang-system-model</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-
         <!-- MySQL 驱动 -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
         </dependency>
-
         <!-- mybatis plus的依赖 -->
         <dependency>
             <groupId>com.baomidou</groupId>
@@ -58,7 +56,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
         <!-- Spring Boot 集成 log4j2 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -66,6 +63,5 @@
         </dependency>
 
     </dependencies>
-
 
 </project>
