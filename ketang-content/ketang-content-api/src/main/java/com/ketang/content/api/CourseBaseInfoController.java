@@ -2,6 +2,8 @@ package com.ketang.content.api;
 
 import com.ketang.base.model.PageParams;
 import com.ketang.base.model.PageResult;
+import com.ketang.model.dto.AddCourseDto;
+import com.ketang.model.dto.CourseBaseInfoDto;
 import com.ketang.model.dto.QueryCourseParamDto;
 import com.ketang.model.po.CourseBase;
 import com.ketang.content.service.CourseBaseService;
@@ -24,6 +26,12 @@ public class CourseBaseInfoController {
     public PageResult<CourseBase> list(PageParams pageParams, @RequestBody(required = false) QueryCourseParamDto courseParamDto){
         PageResult<CourseBase> courseBasePageResult = courseBaseService.queryCourseList(pageParams, courseParamDto);
         return courseBasePageResult;
+    }
 
+    @ApiOperation("课程添加信息")
+    @PostMapping("/course")
+    public CourseBaseInfoDto createCourseBase(@RequestBody AddCourseDto addCourseDto){
+        Long CompanyId = 1232141425L;
+        return courseBaseService.createCourseBase(CompanyId, addCourseDto);
     }
 }

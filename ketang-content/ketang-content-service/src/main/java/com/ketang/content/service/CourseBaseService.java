@@ -2,6 +2,8 @@ package com.ketang.content.service;
 
 import com.ketang.base.model.PageParams;
 import com.ketang.base.model.PageResult;
+import com.ketang.model.dto.AddCourseDto;
+import com.ketang.model.dto.CourseBaseInfoDto;
 import com.ketang.model.dto.QueryCourseParamDto;
 import com.ketang.model.po.CourseBase;
 
@@ -14,6 +16,12 @@ public interface CourseBaseService {
      * @return
      */
     public PageResult<CourseBase> queryCourseList(PageParams pageParams, QueryCourseParamDto courseParamDto);
-    // 查询
 
+    /**
+     * 课程新增
+     * @param CompanyId 机构id
+     * @param addCourseDto 添加信息
+     * @return
+     */
+    public CourseBaseInfoDto createCourseBase(Long CompanyId, AddCourseDto addCourseDto);
 }
