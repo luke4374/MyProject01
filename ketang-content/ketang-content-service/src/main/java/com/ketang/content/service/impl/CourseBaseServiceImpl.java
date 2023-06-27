@@ -2,6 +2,7 @@ package com.ketang.content.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.ketang.base.exception.KeTangException;
 import com.ketang.base.model.PageParams;
 import com.ketang.base.model.PageResult;
 import com.ketang.content.mapper.CourseBaseMapper;
@@ -63,9 +64,9 @@ public class CourseBaseServiceImpl implements CourseBaseService {
     @Override
     public CourseBaseInfoDto createCourseBase(Long companyId, AddCourseDto addCourseDto) {
         // TODO:合法性校验
-        if(StringUtils.isBlank(addCourseDto.getName())) throw new RuntimeException("课程名为空");
-        if(StringUtils.isBlank(addCourseDto.getMt())) throw new RuntimeException("课程分类为空");
-        if(StringUtils.isBlank(addCourseDto.getSt())) throw new RuntimeException("课程小分类为空");
+        if(StringUtils.isBlank(addCourseDto.getName())) KeTangException.throwExp("课程名为空");
+        if(StringUtils.isBlank(addCourseDto.getMt())) KeTangException.throwExp("课程分类为空");
+        if(StringUtils.isBlank(addCourseDto.getSt())) KeTangException.throwExp("课程小分类为空");
         // 向课程基本信息表和营销表写数据
         // Write to CourseBase
         CourseBase courseBase = new CourseBase();
@@ -124,10 +125,10 @@ public class CourseBaseServiceImpl implements CourseBaseService {
         // 合法校验
         String charge = CMNew.getCharge();
         if (StringUtils.isEmpty(charge)){
-            throw new RuntimeException("收费为空");
+            KeTangException.throwExp("收费为空");
         }else if(charge.equals("201001")){
-            if (CMNew.getPrice() == null || CMNew.getPrice().floatValue() <= 0){
-                throw new RuntimeException("标记收费但收费价格为空");
+            if (CMNew.getPrice() == null || CMNew.getPrice().floatValue() <= 0 || CMNew.getOriginalPrice() <= 0){
+                KeTangException.throwExp("标记收费,但收费价格不合规");
             }
         }
 
