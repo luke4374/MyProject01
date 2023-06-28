@@ -63,10 +63,10 @@ public class CourseBaseServiceImpl implements CourseBaseService {
     @Transactional// 增删改加事务管理
     @Override
     public CourseBaseInfoDto createCourseBase(Long companyId, AddCourseDto addCourseDto) {
-        // TODO:合法性校验
-        if(StringUtils.isBlank(addCourseDto.getName())) KeTangException.throwExp("课程名为空");
-        if(StringUtils.isBlank(addCourseDto.getMt())) KeTangException.throwExp("课程分类为空");
-        if(StringUtils.isBlank(addCourseDto.getSt())) KeTangException.throwExp("课程小分类为空");
+        // 合法性校验
+//        if(StringUtils.isBlank(addCourseDto.getName())) KeTangException.throwExp("课程名为空");
+//        if(StringUtils.isBlank(addCourseDto.getMt())) KeTangException.throwExp("课程分类为空");
+//        if(StringUtils.isBlank(addCourseDto.getSt())) KeTangException.throwExp("课程小分类为空");
         // 向课程基本信息表和营销表写数据
         // Write to CourseBase
         CourseBase courseBase = new CourseBase();
