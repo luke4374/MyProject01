@@ -1,5 +1,6 @@
 package com.ketang.content.api;
 
+import com.ketang.base.exception.ValidationGroups;
 import com.ketang.base.model.PageParams;
 import com.ketang.base.model.PageResult;
 import com.ketang.model.dto.AddCourseDto;
@@ -31,7 +32,9 @@ public class CourseBaseInfoController {
 
     @ApiOperation("课程添加信息")
     @PostMapping("/course")
-    public CourseBaseInfoDto createCourseBase(@RequestBody @Validated AddCourseDto addCourseDto){
+    public CourseBaseInfoDto createCourseBase(@RequestBody
+                                              @Validated(ValidationGroups.Insert.class) // 激活JSR 新增分组的校验
+                                              AddCourseDto addCourseDto){
         Long CompanyId = 1232141425L;
         return courseBaseService.createCourseBase(CompanyId, addCourseDto);
     }

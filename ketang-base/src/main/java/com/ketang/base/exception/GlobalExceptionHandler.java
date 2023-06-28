@@ -62,6 +62,4 @@ public class GlobalExceptionHandler {
         // 返回前端
         return new RestErrorResponse(CommonError.UNKNOWN_ERROR.getErrMessage());
     }
-
-
 }
