@@ -11,6 +11,7 @@ import com.ketang.content.mapper.CourseMarketMapper;
 import com.ketang.content.service.CourseBaseService;
 import com.ketang.model.dto.AddCourseDto;
 import com.ketang.model.dto.CourseBaseInfoDto;
+import com.ketang.model.dto.EditCourseDto;
 import com.ketang.model.dto.QueryCourseParamDto;
 import com.ketang.model.po.CourseBase;
 import com.ketang.model.po.CourseCategory;
@@ -92,12 +93,11 @@ public class CourseBaseServiceImpl implements CourseBaseService {
         // 调用校验保存方法
         saveCourseMarketInfo(courseMarket);
         // 数据库查询封装
-        CourseBaseInfoDto courseInfo = getCourseInfo(courseId);
-
-        return courseInfo;
+        return queryById(courseId);
     }
 
-    private CourseBaseInfoDto getCourseInfo(Long id){
+    @Override
+    public CourseBaseInfoDto queryById(Long id){
         // 从数据库查询两表中的数据
         CourseBase courseBase = courseBaseMapper.selectById(id);
         if (courseBase == null) return null;
@@ -114,6 +114,27 @@ public class CourseBaseServiceImpl implements CourseBaseService {
         courseBaseInfoDto.setMtName(Category_getMtName_Tmp.getName());
         courseBaseInfoDto.setStName(Category_getStName_Tmp.getName());
         return courseBaseInfoDto;
+    }
+
+    @Override
+    public CourseBaseInfoDto updateCourse(Long companyId, EditCourseDto editCourseDto) {
+        // 有关业务的合法性校验, 不可修改其他机构数据
+        Long courseId = editCourseDto.getId();
+        CourseBase courseBase = courseBaseMapper.selectById(courseId);
+        CourseMarket courseMarket = courseMarketMapper.selectById(courseId);
+        if (courseBase == null) KeTangException.throwExp("课程不存在");
+        if (courseMarket == null) KeTangException.throwExp("课程营销信息不存在");
+        if (!companyId.equals(courseBase.getCompanyId())) KeTangException.throwExp("不可修改其他机构信息！");
+        // 封装数据
+        BeanUtils.copyProperties(editCourseDto, courseBase);
+        BeanUtils.copyProperties(editCourseDto, courseMarket);
+        courseBase.setChangeDate(LocalDateTime.now());
+        // 插入数据库
+        int base = courseBaseMapper.updateById(courseBase);
+        int market = courseMarketMapper.updateById(courseMarket);
+        if (base + market <= 0) KeTangException.throwExp("更新失败");
+        // 查询数据并返回
+        return queryById(editCourseDto.getId());
     }
 
     /**
