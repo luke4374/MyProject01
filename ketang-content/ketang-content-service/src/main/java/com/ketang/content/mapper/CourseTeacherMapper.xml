@@ -18,4 +18,8 @@
         id, course_id, teacher_name, position, introduction, photograph, create_date
     </sql>
 
+    <select id="selectByCourseId" parameterType="long" resultType="com.ketang.model.po.CourseTeacher">
+        select * from course_teacher where course_id = #{courseId}
+    </select>
+
 </mapper>

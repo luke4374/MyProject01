@@ -26,6 +26,11 @@ public class GlobalExceptionHandler {
         // 记录异常log
         log.error("系统异常{}", e.getErrMessage(), e);
         // 返回前端
+        if (e.getErrCode() != null){
+            String errCode = e.getErrCode();
+            String message = e.getMessage();
+            return new RestErrorResponse(errCode, message);
+        }
         String errMessage = e.getErrMessage();
         return new RestErrorResponse(errMessage);
     }

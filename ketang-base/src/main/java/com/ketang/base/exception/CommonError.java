@@ -5,7 +5,8 @@ public enum CommonError {
     PARAM_ERROR("参数有误"),
     NULL_OBJECT("对象为空"),
     QUERY_NULL("查询结果为空"),
-    REQUEST_NULL("请求参数为空");
+    REQUEST_NULL("请求参数为空"),
+    TEACHPLAN_DELETE_ERROR("课程计划信息还有子信息， 无法操作");
 
     private String errMessage;
 

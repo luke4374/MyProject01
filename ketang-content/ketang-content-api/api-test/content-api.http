@@ -51,4 +51,8 @@ Content-Type: application/json
 
 ### 查询课程章节树
 
-GET {{content_host}}/content/teachplan/117/tree-nodes
+GET {{content_host}}/content/teachplan/25/tree-nodes
+
+### 删除课程计划-大章节(包含小章节)
+
+DELETE {{content_host}}/content/teachplan/290
