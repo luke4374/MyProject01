@@ -1,17 +1,13 @@
-#server:
-#  servlet:
-#    context-path: /system
-#  port: 63110
-#?????
+# 服务基本配置
 spring:
   application:
-    name: system-api
+    name: gateway # 服务名
   profiles:
-    active: dev
+    active: dev # 环境名
   cloud:
     nacos:
       server-addr: 192.168.3.10:8848
-      discovery:
+      discovery: # 服务注册发现
         namespace: develop-env
         group: ketang-project
       config: # 配置文件路径
@@ -19,14 +15,18 @@ spring:
         group: ketang-project
         file-extension: yaml
         refresh-enabled: true
-        extension-configs:
-          - data-id: system-service-${spring.profiles.active}.yaml
-            group: ketang-project
-            refresh: true
-        shared-configs:
-          - data-id: swagger-${spring.profiles.active}.yaml
-            group: ketang-project-common
-            refresh: true
+        shared-configs: # 公用配置文件
           - data-id: logging-${spring.profiles.active}.yaml
             group: ketang-project-common
             refresh: true
+# 日志
+#logging:
+#  config: classpath:log4j2-dev.xml
+#swagger:
+#  title: "在线课堂内容管理系统"
+#  description: "内容系统管理系统对课程相关信息进行管理"
+#  base-package: com.ketang.content
+#  enabled: true
+#  version: 1.0.0
+
+

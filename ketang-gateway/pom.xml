@@ -4,50 +4,44 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.ketang</groupId>
-        <artifactId>ketang-system</artifactId>
+        <artifactId>ketang-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../ketang-parent</relativePath> <!-- lookup parent from repository -->
     </parent>
 
     <groupId>com.ketang</groupId>
-    <artifactId>ketang-system-service</artifactId>
+    <artifactId>ketang-gateway</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>ketang-system-service</name>
-    <description>ketang-system-service</description>
+    <name>ketang-gateway</name>
+    <description>ketang-gateway</description>
 
     <properties>
         <java.version>1.8</java.version>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>com.ketang</groupId>
-            <artifactId>ketang-system-model</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <!-- MySQL 驱动 -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-        <!-- mybatis plus的依赖 -->
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-        </dependency>
+        <!--网关-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-context</artifactId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
+        </dependency>
+
+        <!--服务发现中心-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
         </dependency>
-        <!-- Spring Boot 集成 Junit -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
         <!-- 排除 Spring Boot 依赖的日志包冲突 -->
         <dependency>
@@ -60,12 +54,12 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
         <!-- Spring Boot 集成 log4j2 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
-
     </dependencies>
 
 </project>
