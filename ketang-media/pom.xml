@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.ketang</groupId>
+        <artifactId>ketang-parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../ketang-parent</relativePath><!-- lookup parent from repository -->
+    </parent>
+
+    <groupId>com.ketang</groupId>
+    <artifactId>ketang-media</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>ketang-media</name>
+    <description>ketang-media</description>
+    <packaging>pom</packaging>
+
+
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
+
+    <modules>
+        <module>ketang-media-api</module>
+        <module>ketang-media-service</module>
+        <module>ketang-media-model</module>
+    </modules>
+
+</project>
