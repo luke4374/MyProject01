@@ -26,4 +26,8 @@ spring:
           - data-id: logging-${spring.profiles.active}.yaml
             group: ketang-project-common
             refresh: true
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
 

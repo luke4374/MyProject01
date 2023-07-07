@@ -49,4 +49,6 @@ public class MediaFilesController {
 
         return mediaFileService.uploadFile(companyId, fileParams, localPath);
     }
+
+
 }
